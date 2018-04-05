@@ -20,14 +20,17 @@
 Route::get('/login', function (){
 return  view('/auth/login');
 });
-Route::get('/register', function (){
-    return  view('/auth/register');
+Route::get('/reg', function (){
+    return  view('/reg');
 });
-Route::get('/reg', 'UserCpController@reg');
+Route::post('/reg','UserCpController@user_store');
+//Route::get('/reg', 'UserCpController@reg');
 
 Auth::routes();
 Route::group(['middleware'=>'auth','admin'],function () {
     Route::get('/admin_panel','AdminController@panel');
+Route::post('/admin_panel','AdminController@block');
+
 });
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
@@ -40,8 +43,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 //Route::post('/regm', 'AuthController@auth');
 
-Route::get('/{user}/', 'UserCpController@get_info');
-Route::post('/regi','UserCpController@user_store');
+//Route::get('/{user}/', 'UserCpController@get_info');
+
 
 
 

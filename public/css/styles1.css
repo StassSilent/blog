@@ -1,11 +1,25 @@
 
+@font-face {
+    font-family: no_name_37_Lite;
+    src: url(11693.otf);
+}
+
+body {
+    font-family:no_name_37_Lite, Sans-Serif;
+}
+.font_h1{
+    font-size: 55px;
+    color: #482c2e;
+}
 .img_border{
     width: 200px;
     height: 200px;
 border: 5px;
     border-color: #1b1e21;
 }
-
+.rbackground{
+    background: #f9fafb;
+}
 .navMenu{
 	background-color: #482c2e;
 
@@ -28,8 +42,69 @@ li {
 
 }
 .border{
-    border: #1b1e21 3px;
+    border: #1b1e21 7px;
 }
+.sz{
+    height: 100px;
+    width: 320px;
+    padding: 10px;
+    background: #ffffff;
+    box-shadow: 0 3px 15px 10px rgba(221, 221, 221, 0.5);
+}
+.sz1{
+    height: 300px;
+    width: 700px;
+
+}
+.sz2{
+    height: 130px;
+    width: 130px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 3px 15px 10px rgba(221, 221, 221, 0.5);
+
+}
+
+.sz3{
+    height: 290px;
+    width: 690px;
+    overflow-y: scroll;
+    background: #ffffff;
+    box-shadow: 0 3px 15px 10px rgba(221, 221, 221, 0.5);
+}
+.form1 {
+    position: relative;
+    width: 300px;
+}
+.d1 input {
+    width: 100%;
+    height: 42px;
+    padding-left: 10px;
+    border: 1px solid #482c2e;
+    border-radius: 4px;
+    outline: none;
+    background: #F9F0DA;
+    color: #9E9C9C;
+}
+.d1 button {
+    position: absolute;
+    top: 0;
+    right: 0px;
+    width: 42px;
+    height: 42px;
+    border: none;
+    background:  #482c2e;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+.d1 button:before {
+    font-size: 16px;
+    color: #F9F0DA;
+}
+.data_img{
+    border-radius: 50%;
+}
+
 .sidenav {
     height: 100%;
     width: 200px;
