@@ -29,6 +29,7 @@ class AdminController extends Controller
         ]);
         return redirect('/admin_panel');
     }
+    //
 
 }
 
