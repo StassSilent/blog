@@ -27,8 +27,20 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-public function isAdmin(){
-    return $this->admin;
-                 }
+    public function isAdmin(){
+
+        return $this->grant==1;
+    }
+    public function isRedactor(){
+        return $this->grant==2;
+    }
+
+    public function isBlock(){
+        return $this->block;
+    }
+
 }
+
+
+
 

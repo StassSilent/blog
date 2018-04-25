@@ -1,10 +1,9 @@
 
    <div class="  col-xl-12  main " id="main" >
       <div id="mySidenav" class="sidenav">
-          <a href="#">About</a>
-          <a href="#">Services</a>
-          <a href="#">Clients</a>
-          <a href="#">Contact</a>
+          <a href="#">Книги</a>
+          <a href="#">Статьи</a>
+          <a href="#">Видео</a>
       </div>
       <!-- Use any element to open the sidenav -->
 
@@ -13,8 +12,8 @@
 
         <span style="font-size:30px;cursor:pointer" id="m" onclick="openNav()">&#9776;</span>
 
-      <a class="nav-link active" href="#">
-      	<img class="logo" src="th.png" alt="logo">
+      <a class="nav-link active" href="{{('index')}}">
+      	<img class="logo" src=""  alt="logo">
       </a>
 
 
@@ -35,67 +34,47 @@
         </form>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Личный кабинет</a>
+            <a class="nav-link" href="{{('/user_cp')}}">Личный кабинет</a>
           </li>
           <li class="nav-item reg">
-            <a class="nav-link" href="#">Регистрация</a>
+            <a class="nav-link" href="{{('reg')}}">Регистрация</a>
           </li>
+           @guest
            <li class="nav-item">
-            <a class="nav-link" data-toggle="modal" data-target="#VoidModal" href="#">Вход</a>
-          </li>
+            <a class="nav-link" href="{{('/login')}}">Вход</a>
+          </li > @endguest
+           @auth
+           <li class="nav-item">
+               <div class="dropdown show ml-auto pt-2">
+                   <a id="dropdownMenuLink" class="dropdown-toggle pt-3" href="#"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                       {{ Auth::user()->name }} <span class="caret"></span>
+                   </a>
 
+                   <div class="dropdown-menu w-25 dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+
+                       <a class="dropdown-item w-25" href="{{ route('logout') }}"
+                          onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">Выйти
+                       </a>
+
+
+                       <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                           @csrf
+                       </form>
+
+                   </div>
+               </div>
+           </li>
+@endauth
         </ul>
 
       </div>
 
 
     </nav>
-       <div class="modal fade" id="VoidModal" tabindex="-1" role="dialog" aria-labelledy="VoidModal" aria-hidden="true">
-           <div class="modal-dialog" role="document">
-               <div class="modal-content">
-                   <div class="modal-header">
-                       <h5 class="modal-title" id="VoidModalLable"> Добро пожаловать! </h5>
-                       <button class="close" type="button" data-dismiss="modal" aria-lable="Close">
-                           <span aria-hidden="true">&times;</span>
-                       </button>
-                   </div>
-                   <div class="modal-body">
-                       <div class="container">
-                           <form>
-                               <div class="form-froup">
-                                   <div class="form-row">
-
-                                       <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                           <lable for="VoidInputEmail"> Введите ваш email </lable>
-                                       </div>
-                                       <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                           <input type="email" class="form-control" id="VoidInputEmail" aria-describdby="emailHalp" placeholder="Email" required="true"> 								</div>
-                                   </div>
-                               </div><br>
-                               <div class="form-froup">
-                                   <div class="form-row">
-
-                                       <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                           <lable for="VoidInputPass">Введите ваш пароль </lable>
-                                       </div>
-                                       <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                           <input type="password" class="form-control" id="VoidInputPass"  placeholder="Password" required="true">
-                                       </div>
-                                   </div>
-                               </div>
-                           </form>
-                       </div>
-                   </div>
-                   <div class="modal-footer">
-                       <button class="btn btn-primery">Отправить</button>
-                       <button class="btn btn-secondary" data-dismiss="modal">Close</button>
-                   </div>
-               </div>
-
            </div>
 
 
-       </div>
        <script>
            /* Set the width of the side navigation to 250px */
            function openNav() {
@@ -112,4 +91,3 @@
            }
            /* Set the width of the side navigation to 0 */
        </script>
-   </div>

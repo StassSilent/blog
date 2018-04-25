@@ -16,8 +16,10 @@
     <!-- Bootstrap core CSS -->
     {{--<script src="{{asset('css/js/jquery.min.js')}}"></script>--}}
 {{--<link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" media="screen">--}}
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 <link href="{{asset('css/styles1.css')}}" rel="stylesheet">
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{asset('js/jquery.js')}}"></script>
 
 </head>
 
@@ -40,10 +42,6 @@
                     onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">Выйти
                 </a>
-                        <a class="dropdown-item w-25" href="/{{ Auth::user()->name }}"
-                    onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();">{{ Auth::user()->name }}
-                </a>
 
 
                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -59,8 +57,9 @@
 
 
     <div class="sidenav">
+        <a href="{{('/')}}">На главную</a>
         <a href="#">Профиль</a>
-        <a href="#">Сообщения</a>
+        <a href="{{('/messages')}}">Сообщения</a>
         <a href="#">Проекты</a>
         <a href="#">Форум</a>
     </div>
@@ -71,5 +70,32 @@
 <script src="{{ asset('js/app.js') }}"></script>
 {{--<script src="{{asset('js/js/jquery.js')}}"></script>--}}
 {{--<script src="{{asset('js/js/bootstrap.min.js')}}"></script>--}}
+<script type="text/javascript">
+
+
+    function readURL(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#pw').attr('src', e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#uploadAvatar").change(function() {
+        readURL(this);
+    });
+</script>
+
+
+
+
+
+<script src="{{ asset('js/about.js') }}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

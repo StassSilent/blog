@@ -14,6 +14,7 @@
     <script src="{{asset('css/js/jquery.min.js')}}"></script>
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" media="screen">
     <link href="{{asset('css/styles1.css')}}" rel="stylesheet">
+    <link href="{{asset('css/styles.css')}}" rel="stylesheet">
     <link href="{{asset('css/form-validation.css" rel="stylesheet')}}">
 </head>
 
@@ -25,7 +26,7 @@
         <nav class="navbar navbar-right navbar-expand-xl navbar-expand-lg navbar-expand-md navbar-expand-sm navbar-dark navbar-default  fixed-top navMenu">
             <div class="container-fluid">
               <!--  <a class="navbar-brand pl-200" href="#"></a>-->
-                <a  href="">Home</a>
+                <a  href="{{('index')}}">Home</a>
             </div>
         </nav>
     </div>
@@ -93,7 +94,7 @@
 </div>
 
 
-@extends('footer')
+@include ('layouts.footerNavigation')
 <script src="{{asset('js/popper.min.js')}}"></script>
 <script src="{{asset('js/holder.min.js')}}"></script>
 <script src="{{asset('js/js/jquery.js')}}"></script>
