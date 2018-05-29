@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Dialog;
+use App\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use function Sodium\compare;
 
 class UserCpController extends Controller
 {
@@ -36,7 +39,7 @@ class UserCpController extends Controller
         $user->login = request('login');
         $user->email = request('email');
         $user->password = bcrypt(request('password'));
-        $user->photo = 'img/grey.jpg';
+        $user->photo = 'grey.jpg';
         $user->save();
         return redirect('/1');
 
@@ -66,6 +69,42 @@ class UserCpController extends Controller
             User::where('id', $id)->update(['about' => $about]);
         }
         return $about;
+    }
+    public function guest($id){
+$guest=User::select('users.id as id', 'users.name as name','users.about as about','users.photo as photo' )
+    ->where('users.id', $id)
+    ->get();
+        return view('guest_cp',compact('guest'));
+    }
+    public function post_mes(Request $request){
+
+        $id_1=User::find(Auth::id());
+        $id_2= request('id_2');
+        $ifdialog=Dialog::where('id_1',$id_1)
+        ->orwhere('id_2',$id_1)
+            ->orwhere('id_1',$id_2)
+            ->orwhere('id_2',$id_2);
+
+
+                if ($ifdialog==0){
+                    $dialog = new Dialog();
+                    $dialog->id_1 = $id_1;
+                    $dialog->id_2 = $id_2;
+                    $dialog->save();
+                }
+
+//        $dat= Dialog::leftJoin('users as id_1', 'dialogs.id_1', '=', 'id_1.id')
+//            ->leftJoin('users as id_2', 'dialogs.id_2', '=', 'id_2.id')
+//            ->select('dialogs.id  as  id','dialogs.id_1  as  id_1', 'id_1.name  as  id_1_name', 'id_1.photo  as  id_1_photo', 'dialogs.id_2  as  id_2',
+//                'id_2.name  as  id_2_name', 'id_2.photo  as  id_2_photo')
+//            ->where('dialogs.id_1', $id_1)
+//            ->orwhere('dialogs.id_2', $id_2)
+//            ->orwhere('dialogs.id_1', $id_2)
+//            ->orwhere('dialogs.id_2', $id_1)
+//            ->get();
+//return view('dialog');
+
+
     }
 }
 

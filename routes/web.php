@@ -51,13 +51,22 @@ Route::group(['middleware'=>'block'], function () {
     Route::get('/ch',"IndexController@message");
 });
 
+Route::get('guest_cp/{id}','UserCpController@guest');
+Route::post('guest_cp/{id}','UserCpController@post_mes');
 
 
 
 Route::group(['middleware'=>'admin'], function () {
     Route::get('/admin_panel','AdminController@panel');
-    Route::post('/admin_panel','AdminController@panel')->name('find.post');
-    Route::post('/admin_panel','AdminController@block1')->name('test.post');
+//    Route::post('/admin_panel','AdminController@panel')->name('find.post');
+    Route::get('/admin_panel11','AdminController@block1');
+    Route::get('/admin_panel12','AdminController@grant');
+    Route::post('/find','AdminController@find');
+    Route::post('/admin_panelp','AdminController@block1')->name('block');
+    Route::post('/admin_panel1','AdminController@unblock')->name('test.post1');
+    Route::post('/admin_panel2','AdminController@grant')->name('test.post2');
+    Route::post('/admin_panel3','AdminController@ungrant')->name('test.post3');
+
 
 });
 
@@ -69,8 +78,10 @@ Route::get('/redactor',"RedactorController@getRed" );
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/create',"categoryController@create" );
-    Route::get('/messages',"messageController@get_messages" );
-//    Route::get('/{user}/', 'UserCpController@get_info');
+    Route::get('/dialog',"messageController@get_dialog" );
+    Route::post('/dialog',"messageController@post_dialog" );
+    Route::get('/messages/{id}',"messageController@post_dialog" );
+    Route::post('/messages',"messageController@post_messages" );
     Route::get('/{user}', 'UserCpController@get_info');
 Route::post('/modal', 'UserCpController@avaUpload');
 Route::post('/user_cp','UserCpController@store_about')->name('about.post');

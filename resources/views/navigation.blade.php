@@ -20,6 +20,7 @@
 <link href="{{asset('css/styles1.css')}}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{asset('js/jquery.js')}}"></script>
+    <link href="{{asset('css/chat.css')}}" rel="stylesheet">
 
 </head>
 
@@ -59,12 +60,21 @@
     <div class="sidenav">
         <a href="{{('/')}}">На главную</a>
         <a href="#">Профиль</a>
-        <a href="{{('/messages')}}">Сообщения</a>
+        <a href="{{('/dialog')}}" role="button" id="mdialog">Сообщения</a>
         <a href="#">Проекты</a>
         <a href="#">Форум</a>
     </div>
+
+    <script>
+
+    </script>
+
+
+
     <div class="main">
       @yield('user_content')
+
+
     </div>
 </div>
 <script src="{{ asset('js/app.js') }}"></script>
@@ -96,6 +106,7 @@
 
 
 <script src="{{ asset('js/about.js') }}"></script>
+<script src="{{ asset('js/dialogs.js') }}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
